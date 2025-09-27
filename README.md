@@ -1,4 +1,14 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Portfolio Website
+
+A modern, responsive portfolio website built with Next.js and Tailwind CSS.
+
+## Features
+
+- 🎨 Clean, modern design
+- 📱 Fully responsive
+- ⚡ Fast performance with Next.js
+- 🎯 SEO optimized
+- 🌙 Ready for dark mode implementation
 
 ## Getting Started
 
@@ -10,13 +20,16 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Customization
+
+1. Update personal information in `src/app/page.js`
+2. Add your projects to the projects section
+3. Replace placeholder images in the `public/` folder
+4. Customize colors and styling in `src/app/globals.css`
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
