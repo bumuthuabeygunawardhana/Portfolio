@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import FaceTracker from './FaceTracker';
+import RotatingB from './RotatingB';
 
 // Dynamic Roles Component
 function DynamicRoles() {
@@ -97,10 +98,10 @@ export default function AnimatedHero() {
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-2 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
             Hi there
           </h1>
-          <h2 className="text-5xl md:text-6xl font-bold text-white ml-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-            I'm Bumuthu
+          <h2 className="text-5xl md:text-9xl font-bold text-white ml-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            I'm <RotatingB />umuthu
           </h2>
-          <div className="h-1 w-24 bg-gradient-to-r from-blue-400 to-purple-500 mt-4 rounded-full"></div>
+          <div className="h-1 w-45 bg-gradient-to-r from-blue-400 to-purple-500 mt-4 rounded-full"></div>
         </div>
 
         {/* Center Content Container */}
@@ -109,32 +110,15 @@ export default function AnimatedHero() {
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <FaceTracker />
           </div>
-
+        
           {/* Dynamic Roles - Below Face */}
-          <div className={`mt-8 transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <div className={`mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <DynamicRoles />
-            <p className="text-lg text-gray-400 mb-12 max-w-xl mx-auto text-center mt-4">
-              Crafting digital experiences with passion and precision
-            </p>
-          </div>
-
-          {/* Animated Buttons - Below Subtitle */}
-          <div className={`flex gap-6 justify-center transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <a 
-              href="#projects" 
-              className="group relative overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white px-8 py-4 rounded-full font-semibold transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/25 hover:scale-105"
-            >
-              <span className="relative z-10">View My Work</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-pink-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-            </a>
-            <a 
-              href="#contact" 
-              className="border-2 border-purple-400 text-purple-400 px-8 py-4 rounded-full font-semibold hover:bg-purple-400 hover:text-white transition-all duration-300 hover:shadow-xl hover:shadow-purple-400/25 hover:scale-105"
-            >
-              Get In Touch
-            </a>
           </div>
         </div>
+          {/* Animated Buttons - Below Subtitle */}
+          
+        
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">

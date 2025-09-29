@@ -116,3 +116,22 @@ html {
     transform: translateY(2px);
   }
 }
+
+/* Custom 360 degree rotation */
+.rotate-360 {
+  transform: rotate(360deg);
+}
+
+/* Smooth rotation keyframe animation */
+@keyframes spin360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin360 {
+  animation: spin360 1s ease-in-out;
+}
