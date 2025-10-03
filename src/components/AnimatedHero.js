@@ -12,7 +12,7 @@ function DynamicRoles() {
     "Software Engineer",
     "Full Stack Developer", 
     "UI/UX Designer",
-    "AI/ML Enthusiast",
+    //"AI/ML Enthusiast",
     "Creative Problem Solver"
   ];
 
@@ -110,7 +110,7 @@ export default function AnimatedHero() {
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <FaceTracker />
           </div>
-        
+           <div className="h-8"></div>
           {/* Dynamic Roles - Below Face */}
           <div className={`mt-16 transition-all duration-1000 delay-500 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <DynamicRoles />
