@@ -1,30 +1,39 @@
 import AnimatedHero from '../components/AnimatedHero';
+import Navigation from '../components/Navigation';
+import AboutSection from '../components/AboutSection';
+import EducationSection from '../components/EducationSection';
+import ProjectsSection from '../components/ProjectsSection';
+import ContactSection from '../components/ContactSection';
 
 export default function Home() {
   return (
-    <main>
-      <AnimatedHero />
+    <main className="relative">
+      {/* Navigation Sidebar */}
+      <Navigation />
       
-      {/* Your other sections */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl font-bold text-center mb-16">About Me</h2>
-          {/* About content */}
-        </div>
+      {/* Home Section - Full Screen */}
+      <section id="home" className="min-h-screen">
+        <AnimatedHero />
       </section>
-
-      <section className="py-20 bg-gray-50">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl font-bold text-center mb-16">Projects</h2>
-          {/* Projects content */}
-        </div>
+      
+      {/* About Section - Full Screen */}
+      <section id="about" className="min-h-screen">
+        <AboutSection />
       </section>
-
-      <section className="py-20 bg-slate-900 text-white">
-        <div className="container mx-auto px-8">
-          <h2 className="text-4xl font-bold text-center mb-16">Contact</h2>
-          {/* Contact content */}
-        </div>
+      
+      {/* Education Section - Full Screen */}
+      <section id="education" className="min-h-screen">
+        <EducationSection />
+      </section>
+      
+      {/* Projects Section - Full Screen */}
+      <section id="projects" className="min-h-screen">
+        <ProjectsSection />
+      </section>
+      
+      {/* Contact Section - Full Screen */}
+      <section id="contact" className="min-h-screen">
+        <ContactSection />
       </section>
     </main>
   );
