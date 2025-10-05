@@ -2,12 +2,13 @@
 import { useState, useEffect } from 'react';
 import { 
   FaJava, FaPython, FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaJs, 
-  FaDatabase, FaFigma, FaGitAlt, FaDocker, FaAws 
+  FaDatabase, FaFigma, FaGitAlt, FaDocker, FaAws, FaCode
 } from 'react-icons/fa';
 import { 
   SiCplusplus, SiC, SiMongodb, SiMysql, SiPostgresql, SiRedis,
   SiAdobexd, SiSketch, SiInvision, SiIntellijidea,
-  SiEclipseide, SiPostman, SiSlack, SiNotion
+  SiEclipseide, SiPostman, SiSlack, SiNotion, SiExpress,
+  SiNextdotjs, SiTypescript, SiCss3, SiReact
 } from 'react-icons/si';
 import { DiJavascript1 } from 'react-icons/di';
 
@@ -37,39 +38,37 @@ export default function AboutSection() {
       { name: 'Python', icon: <FaPython className="text-blue-500" /> },
       { name: 'C', icon: <SiC className="text-blue-600" /> },
       { name: 'C++', icon: <SiCplusplus className="text-blue-700" /> },
-      { name: 'JavaScript', icon: <DiJavascript1 className="text-yellow-500" /> }
+      
     ],
     'Web Development': [
       { name: 'React', icon: <FaReact className="text-cyan-400" /> },
       { name: 'Node.js', icon: <FaNodeJs className="text-green-600" /> },
-      { name: 'HTML5', icon: <FaHtml5 className="text-orange-600" /> },
-      { name: 'CSS3', icon: <FaCss3Alt className="text-blue-500" /> },
-      { name: 'JavaScript', icon: <FaJs className="text-yellow-500" /> }
+      { name: 'Express', icon: <SiExpress className="text-gray-600" /> },
+      { name: 'React Native', icon: <SiReact className="text-cyan-500" /> },
+      { name: 'Next.js', icon: <SiNextdotjs className="text-black" /> },
+      { name: 'JavaScript', icon: <FaJs className="text-yellow-500" /> },
+      { name: 'TypeScript', icon: <SiTypescript className="text-blue-600" /> },
+      { name: 'CSS', icon: <SiCss3 className="text-blue-500" /> },
+      { name: 'HTML', icon: <FaHtml5 className="text-orange-600" /> }
     ],
     Database: [
       { name: 'MongoDB', icon: <SiMongodb className="text-green-500" /> },
       { name: 'MySQL', icon: <SiMysql className="text-blue-600" /> },
       { name: 'PostgreSQL', icon: <SiPostgresql className="text-blue-700" /> },
-      { name: 'Redis', icon: <SiRedis className="text-red-600" /> }
+      
     ],
     'UI/UX Design': [
       { name: 'Figma', icon: <FaFigma className="text-purple-500" /> },
-      { name: 'Adobe XD', icon: <SiAdobexd className="text-pink-500" /> },
-      { name: 'Sketch', icon: <SiSketch className="text-orange-500" /> },
-      { name: 'InVision', icon: <SiInvision className="text-pink-600" /> }
+     
     ],
     IDEs: [
-      
-      { name: 'IntelliJ IDEA', icon: <SiIntellijidea className="text-red-600" /> },
-      { name: 'Eclipse', icon: <SiEclipseide className="text-purple-600" /> }
+      { name: 'VS Code', icon: <FaCode className="text-blue-500" /> },
+      { name: 'IntelliJ IDEA', icon: <SiIntellijidea className="text-red-600" /> }
     ],
     Other: [
       { name: 'Git', icon: <FaGitAlt className="text-orange-600" /> },
       { name: 'Docker', icon: <FaDocker className="text-blue-600" /> },
-      { name: 'AWS', icon: <FaAws className="text-orange-500" /> },
       { name: 'Postman', icon: <SiPostman className="text-orange-500" /> },
-      { name: 'Slack', icon: <SiSlack className="text-purple-600" /> },
-      { name: 'Notion', icon: <SiNotion className="text-gray-700" /> }
     ]
   };
 
@@ -150,27 +149,19 @@ export default function AboutSection() {
             >
               {/* Popup Header - Enhanced */}
               <div className="bg-gradient-to-r from-slate-900/80 to-slate-800/80 backdrop-blur-xl border-b-2 border-purple-500/30 p-8 rounded-t-3xl">
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-center">
                   <div className="flex items-center space-x-6">
                     {/* Category Icon */}
                     <div className="p-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl shadow-lg">
-                      <span className="text-4xl">💻</span>
+                      
                     </div>
                     <div>
                       <h4 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-2">
                         {activeSkill}
                       </h4>
-                      <p className="text-gray-400 text-lg">
-                        {skillCategories[activeSkill]?.length} skills • Click on any skill to learn more
-                      </p>
+                      
                     </div>
                   </div>
-                  <button
-                    onClick={closePopup}
-                    className="group p-4 bg-white/5 hover:bg-red-500/20 rounded-2xl border-2 border-white/10 hover:border-red-500/40 transition-all duration-300 hover:scale-110"
-                  >
-                    <span className="text-gray-400 group-hover:text-red-400 text-3xl font-bold leading-none">×</span>
-                  </button>
                 </div>
               </div>
 
@@ -195,19 +186,10 @@ export default function AboutSection() {
                         </h5>
                         
                         {/* Decorative Line */}
-                        <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-600 mx-auto rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        
                         
                         {/* Skill Level Indicator (Optional) */}
-                        <div className="mt-3 flex justify-center space-x-1">
-                          {[...Array(5)].map((_, i) => (
-                            <div 
-                              key={i} 
-                              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                i < 4 ? 'bg-purple-500' : 'bg-gray-600'
-                              } group-hover:bg-purple-400`}
-                            ></div>
-                          ))}
-                        </div>
+                        
                       </div>
                     </div>
                   ))}
@@ -216,9 +198,7 @@ export default function AboutSection() {
                 {/* Additional Info Section */}
                 <div className="mt-12 p-6 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-2xl border border-purple-500/20">
                   <div className="text-center">
-                    <h5 className="text-2xl font-bold text-white mb-3">
-                      🚀 Constantly Learning & Growing
-                    </h5>
+                    
                     <p className="text-gray-300 text-lg leading-relaxed">
                       These are some of the technologies I work with in <span className="text-purple-400 font-semibold">{activeSkill}</span>. 
                       I'm always exploring new tools and frameworks to stay current with industry trends and deliver innovative solutions.
