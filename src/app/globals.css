@@ -21,6 +21,7 @@ a {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 2rem;
 }
 
 /* Custom Animations */
@@ -115,4 +116,46 @@ html {
     opacity: 0.6;
     transform: translateY(2px);
   }
+}
+
+/* Custom 360 degree rotation */
+.rotate-360 {
+  transform: rotate(360deg);
+}
+
+/* Smooth rotation keyframe animation */
+@keyframes spin360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin360 {
+  animation: spin360 1s ease-in-out;
+}
+
+/* Add this at the end of globals.css */
+
+/* Ensure all sections take full screen height */
+section {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+/* Ensure main container doesn't have padding issues */
+main {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Fix any potential margin/padding issues */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
 }
