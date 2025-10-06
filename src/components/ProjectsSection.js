@@ -22,10 +22,10 @@ export default function ProjectsSection() {
   const projects = [
     {
       id: 1,
-      title: "AI-Powered E-commerce Platform",
-      description: "A full-stack e-commerce solution with AI-powered product recommendations and real-time inventory management.",
-      image: "/port_2.png",
-      technologies: ["React", "Node.js", "AI/ML", "MongoDB"],
+      title: "Bayhill Renters-SL",
+      description: "Mobile app and Web app which manages vehicles for Bayhill Renters-SL, Includes real-time vehicle availability, secure bookings, and payment integration As the first version.this is individual.",
+      image: "/mobile.png",
+      //technologies: ["React", "Node.js", "AI/ML", "MongoDB"],
       category: "fullstack",
       github: "https://github.com",
       live: "https://demo.com",
@@ -33,21 +33,21 @@ export default function ProjectsSection() {
     },
     {
       id: 2,
-      title: "Smart Task Management App",
-      description: "A collaborative task management tool with real-time updates, file sharing, and advanced analytics.",
-      image: "/port_2.png",
-      technologies: ["Next.js", "Firebase", "TypeScript", "Tailwind"],
+      title: " Hybrid Workplace Management System",
+      description: " Developed a smart workplace management platform Collaborated with Wiley Global Technology this is the 2year software project (team)",
+      image: "/HWMS.png",
+      //technologies: ["Next.js", "Firebase", "TypeScript", "Tailwind"],
       category: "frontend",
       github: "https://github.com",
       live: "https://demo.com",
-      featured: true
+      featured: false
     },
     {
       id: 3,
-      title: "Healthcare Data Analytics",
-      description: "Machine learning platform for analyzing healthcare data and predicting patient outcomes.",
-      image: "/port_2.png",
-      technologies: ["Python", "TensorFlow", "React", "PostgreSQL"],
+      title: "Power Measuring Device System",
+      description: "Tackled the common problem of consumers lacking awareness about their electricity consumption.1 st year hardware project (team)",
+      image: "/Hardware.jpeg",
+      //technologies: ["Python", "TensorFlow", "React", "PostgreSQL"],
       category: "ai",
       github: "https://github.com",
       live: "https://demo.com",
@@ -55,48 +55,30 @@ export default function ProjectsSection() {
     },
     {
       id: 4,
-      title: "Social Media Dashboard",
-      description: "Comprehensive dashboard for managing multiple social media accounts with analytics and scheduling.",
-      image: "/port_2.png",
-      technologies: ["Vue.js", "Express", "Redis", "Chart.js"],
-      category: "frontend",
+      title: "Portfolio Website",
+      description: "An interactive personal portfolio built with modern animation concepts, smooth transitions, and 3D visuals.",
+      image: "/home.png",
+      //technologies: ["Vue.js", "Express", "Redis", "Chart.js"],
+      //category: "frontend",
       github: "https://github.com",
       live: "https://demo.com",
       featured: false
     },
     {
       id: 5,
-      title: "Blockchain Voting System",
-      description: "Secure and transparent voting system built on blockchain technology with smart contracts.",
-      image: "/port_2.png",
-      technologies: ["Solidity", "Web3.js", "React", "Ethereum"],
-      category: "blockchain",
-      github: "https://github.com",
-      live: "https://demo.com",
-      featured: true
-    },
-    {
-      id: 6,
-      title: "Restaurant Management API",
-      description: "RESTful API for restaurant management with order processing, inventory, and staff management.",
-      image: "/port_2.png",
-      technologies: ["Node.js", "Express", "MongoDB", "JWT"],
-      category: "backend",
+      title: "Travel Website",
+      description: "Developed a user-friendly travel website frontend with engaging animations andmodern UI design, aimed at enhancing user experience and visual appeal.",
+      image: "/travel.png",
+      //technologies: ["Solidity", "Web3.js", "React", "Ethereum"],
+      //category: "blockchain",
       github: "https://github.com",
       live: "https://demo.com",
       featured: false
-    }
+    },
+    
   ];
 
-  const filters = [
-    { id: 'all', label: 'All Projects', count: projects.length },
-    { id: 'fullstack', label: 'Full Stack', count: projects.filter(p => p.category === 'fullstack').length },
-    { id: 'frontend', label: 'Frontend', count: projects.filter(p => p.category === 'frontend').length },
-    { id: 'backend', label: 'Backend', count: projects.filter(p => p.category === 'backend').length },
-    { id: 'ai', label: 'AI/ML', count: projects.filter(p => p.category === 'ai').length },
-    { id: 'blockchain', label: 'Blockchain', count: projects.filter(p => p.category === 'blockchain').length }
-  ];
-
+ 
   const filteredProjects = activeFilter === 'all' 
     ? projects 
     : projects.filter(project => project.category === activeFilter);
@@ -112,7 +94,7 @@ export default function ProjectsSection() {
               My Projects
             </h2>
             <div className="h-4"></div>
-            <p className="text-gray-400 text-xl mt-6">Showcasing my latest work and innovations</p>
+            <p className="text-gray-200 text-xl mt-6">(......This project section is under development ! ...)</p>
           </div>
            
           {/* Projects Grid - Centered */}
@@ -127,8 +109,8 @@ export default function ProjectsSection() {
             >
               {/* Featured Badge */}
               {project.featured && (
-                <div className="absolute top-4 right-4 z-10 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                  ⭐ Ongoing
+                <div className="absolute top-4 right-4 z-10 bg-gradient-to-r text-white px-3 py-1 rounded-full text-xs font-bold">
+                  Ongoing..
                 </div>
               )}
 
@@ -141,7 +123,7 @@ export default function ProjectsSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
                 
-                {/* Overlay Buttons */}
+                {/* Overlay Buttons 
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <div className="flex space-x-4">
                     <a 
@@ -163,7 +145,7 @@ export default function ProjectsSection() {
                       </svg>
                     </a>
                   </div>
-                </div>
+                </div> */}
               </div>
 
               {/* Project Content */}
@@ -177,16 +159,7 @@ export default function ProjectsSection() {
                 </p>
 
                 {/* Technologies */}
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, idx) => (
-                    <span 
-                      key={idx}
-                      className="bg-slate-700/50 text-blue-300 px-3 py-1 rounded-full text-sm border border-blue-500/30"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+            
               </div>
             </div>
           ))}
@@ -197,7 +170,7 @@ export default function ProjectsSection() {
           <div className="h-6"></div>
           <div className={`mt-16 transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
             <p className="text-gray-400 mb-8 text-lg font-medium">
-              Ready to bring your vision to life?
+              Have an idea in mind?
             </p>
             <a 
               href="#contact"
@@ -212,7 +185,7 @@ export default function ProjectsSection() {
                 <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
-                <span className="text-base tracking-wide">Let's Discuss Your Project</span>
+                <span className="text-base tracking-wide">Let's Discuss</span>
                 <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
