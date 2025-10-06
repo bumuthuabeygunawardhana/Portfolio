@@ -198,10 +198,10 @@ export default function ContactSection() {
                   <a
                     key={index}
                     href={social.url}
-                    className={`flex items-center justify-center w-12 h-12 bg-slate-800/50 border border-purple-500/20 rounded-xl hover:border-purple-500/40 ${social.color} transition-all duration-300 hover:scale-110`}
+                    className={`flex items-center justify-center w-14 h-14 bg-slate-700/60 border-2 border-purple-500/40 rounded-xl hover:border-purple-500/80 hover:bg-slate-600/80 ${social.color} transition-all duration-300 hover:scale-115 hover:shadow-lg hover:shadow-purple-500/30`}
                     title={social.name}
                   >
-                    <div className={`${social.color} transition-all duration-300`}>
+                    <div className={`text-white ${social.color} transition-all duration-300 text-lg`}>
                       {social.icon}
                     </div>
                   </a>

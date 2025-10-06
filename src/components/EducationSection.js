@@ -21,40 +21,68 @@ export default function EducationSection() {
 
   const educationData = [
     {
-      degree: "Bachelor of Computer Science",
-      institution: "University of Technology",
-      year: "2020 - 2024",
-      grade: "First Class Honours",
-      description: "Specialized in Software Engineering and AI. Completed thesis on Machine Learning applications in web development.",
-      subjects: ["Data Structures", "Algorithms", "Web Development", "AI/ML", "Database Systems"],
+      degree: "B.Sc. (Hons) in Information Technology",
+      institution: "University of Moratuwa",
+      year: "2023 - 2027",
+      grade: "Class is loading...",
+      description: "I am currently pursuing a Bachelor of Science Honours Degree in Information Technology at the University of Moratuwa, one of Sri Lanka’s leading technological universities. The program provides a strong foundation in software engineering, data management, networking, and emerging technologies",
+      subjects: ["GPA: 3.32/4.0"],
       
     },
     {
-      degree: "Advanced Diploma in Software Development",
-      institution: "Tech Institute",
+      degree: "Advanced Level (A/L)",
+      institution: "H/Ruhunu vijayaba college",
       year: "2018 - 2020",
-      grade: "Distinction",
-      description: "Focused on full-stack development and modern web technologies. Built several real-world projects.",
-      subjects: ["JavaScript", "React", "Node.js", "Python", "UI/UX Design"],
+      grade: "1A, 2Bs",
+      description: "Completed Advanced Level in Science stream with Physics,Chemistry,Biology",
+      subjects: [""],
       
     },
     {
-      degree: "Advanced Level (Science Stream)",
-      institution: "Royal College",
-      year: "2016 - 2018",
-      grade: "3 A's",
-      description: "Subjects: Combined Mathematics, Physics, Chemistry. School prefect and head of the Computer Society.",
-      subjects: ["Mathematics", "Physics", "Chemistry", "ICT"],
+      degree: "Ordinary Level (O/L)",
+      institution: "H/Ruhunu vijayaba college",
+      year: "2017",
+      grade: "7A, 2Bs",
+      description: "Completed Ordinary Level examination with excellent results in Science and Mathematics subjects",
+      subjects: [""],
       
     }
   ];
 
   const certifications = [
-    { name: "AWS Certified Developer", year: "2024", icon: "☁️" },
-    { name: "Google Cloud Professional", year: "2023", icon: "🌐" },
-    { name: "React Professional Certificate", year: "2023", icon: "⚛️" },
-    { name: "AI/ML Specialization", year: "2022", icon: "🤖" },
-    { name: "UI/UX Design Certificate", year: "2022", icon: "🎨" }
+    { 
+      name: "Udemy Full-Stack Developer", 
+      year: "2025", 
+      link: "https://www.linkedin.com/posts/bumuthu-abeygunawardhana-1289362b0_fullstack-webdevelopment-udemy-activity-7367144528190853121--oIU?utm_source=share&utm_medium=member_desktop&rcm=ACoAAErjiDABHJnU8x8G3Ph3Gj5lwCERA614-io",
+      icon: (
+        <div className="w-6 h-6 flex items-center justify-center">
+          <span className="text-xl font-bold relative">
+            Ü
+            <span className="absolute -top-1 left-1/2 transform -translate-x-1/2 text-xs">^</span>
+          </span>
+        </div>
+      )
+    },
+    { 
+      name: "Aviatrix Certified Engineer", 
+      year: "2025", 
+      link: "https://www.linkedin.com/posts/bumuthu-abeygunawardhana-1289362b0/aviatrix-certificate",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        </svg>
+      )
+    },
+    { 
+      name: "UOM-Python for Beginners", 
+      year: "2024", 
+      link: "https://www.linkedin.com/posts/bumuthu-abeygunawardhana-1289362b0_oneyearago-throwback-continuouslearning-activity-7206383584608227329-7udv?utm_source=share&utm_medium=member_desktop&rcm=ACoAAErjiDABHJnU8x8G3Ph3Gj5lwCERA614-io",
+      icon: (
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+        </svg>
+      )
+    }
   ];
 
   return (
@@ -93,7 +121,7 @@ export default function EducationSection() {
                       <p className="text-blue-400 text-lg font-medium">{edu.institution}</p>
                     </div>
                     <div className="text-right mt-2 md:mt-0">
-                      <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-medium">
+                      <div className="text-gray-400 text-lg font-medium">
                         {edu.year}
                       </div>
                       <div className="text-green-400 font-semibold mt-2">{edu.grade}</div>
@@ -126,19 +154,24 @@ export default function EducationSection() {
             <div className="h-4"></div>
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 justify-items-center">
               {certifications.map((cert, index) => (
-                <div 
+                <a
                   key={index}
-                  className={`bg-slate-800/50 backdrop-blur-lg border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 hover:scale-105 transition-all duration-300 w-full max-w-xs ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`bg-slate-800/50 backdrop-blur-lg border border-purple-500/20 rounded-xl p-6 hover:border-purple-500/40 hover:scale-105 transition-all duration-300 w-full max-w-xs cursor-pointer group ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
                   style={{ transitionDelay: `${700 + index * 100}ms` }}
                 >
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl">{cert.icon}</span>
+                  <div className="flex items-center space-x-5">
+                    <div className="text-blue-400 group-hover:text-blue-300 transition-colors duration-300">
+                      {cert.icon}
+                    </div>
                     <div>
-                      <h4 className="text-white font-semibold">{cert.name}</h4>
+                      <h4 className="text-white font-semibold group-hover:text-blue-400 transition-colors duration-300">{cert.name}</h4>
                       <p className="text-gray-400 text-sm">{cert.year}</p>
                     </div>
                   </div>
-                </div>
+                </a>
               ))}
             </div>
             <div className="h-8"></div>
