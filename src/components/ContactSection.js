@@ -1,8 +1,10 @@
 'use client';
 import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
   const [isVisible, setIsVisible] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,13 +33,36 @@ export default function ContactSection() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    // You can add your form submission logic here
-    alert('Message sent successfully! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsLoading(true);
+
+    try {
+      // Replace these with your actual EmailJS credentials
+      const serviceId = 'service_zkvqk3p';
+      const templateId = 'template_kmd9mxa';
+      const publicKey = 'v1tj73KauFMeadPeu';
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'Bumuthu', // Your name
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, publicKey);
+      
+      // Success notification
+      alert('Message sent successfully! I\'ll get back to you soon.');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert('Failed to send message. Please try again or contact me directly via email.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
@@ -105,16 +130,7 @@ export default function ContactSection() {
       url: 'https://www.linkedin.com/in/bumuthu-abeygunawardhana-1289362b0/', 
       color: 'hover:text-blue-400' 
     },
-    { 
-      name: 'Twitter', 
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-        </svg>
-      ), 
-      url: 'https://twitter.com/bumuthu', 
-      color: 'hover:text-sky-400' 
-    },
+     
     { 
       name: 'Instagram', 
       icon: (
@@ -135,39 +151,29 @@ export default function ContactSection() {
       url: 'https://www.facebook.com/profile.php?id=100014650149692', 
       color: 'hover:text-blue-600' 
     },
-    { 
-      name: 'Discord', 
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419-.0002 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1568 2.4189Z"/>
-        </svg>
-      ), 
-      url: 'https://discord.com/users/bumuthu', 
-      color: 'hover:text-indigo-400' 
-    }
+ 
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-20 flex items-center justify-center">
+    <section id="contact" className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-20 flex items-center justify-center">
       <div className="w-full max-w-6xl mx-auto px-8 md:px-12 lg:px-16 xl:px-20">
         {/* Section Title */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
             Get In Touch
           </h2>
-          
           <p className="text-gray-400 text-xl mt-6">Let's discuss your next project</p>
         </div>
-        <div className="h-16"></div>
+
         <div className="grid lg:grid-cols-2 gap-20">
           {/* Contact Information */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
             <h3 className="text-3xl font-bold text-white mb-8">Let's Connect</h3>
-            <div className="h-4"></div>
+            
             <p className="text-gray-300 text-lg mb-8 leading-relaxed">
-              I’m eager to start my journey as an Intern Software Engineer and excited to join the industry to gain knowledge and hands-on experience. If you have an opportunity, a project to collaborate on, or simply want to connect, I’d love to hear from you!
+              I'm eager to start my journey as an Intern Software Engineer and excited to join the industry to gain knowledge and hands-on experience. If you have an opportunity, a project to collaborate on, or simply want to connect, I'd love to hear from you!
             </p>
-            <div className="h-4"></div>
+            
             {/* Contact Info Cards */}
             <div className="space-y-4 mb-8">
               {contactInfo.map((info, index) => (
@@ -188,16 +194,17 @@ export default function ContactSection() {
                 </a>
               ))}
             </div>
-            <div className="h-8"></div>
+            
             {/* Social Links */}
             <div>
               <h4 className="text-xl font-bold text-white mb-4">Follow Me</h4>
-              <div className="h-4"></div>
               <div className="flex flex-wrap gap-4">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`flex items-center justify-center w-14 h-14 bg-slate-700/60 border-2 border-purple-500/40 rounded-xl hover:border-purple-500/80 hover:bg-slate-600/80 ${social.color} transition-all duration-300 hover:scale-115 hover:shadow-lg hover:shadow-purple-500/30`}
                     title={social.name}
                   >
@@ -225,7 +232,8 @@ export default function ContactSection() {
                       value={formData.name}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors"
+                      disabled={isLoading}
+                      className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors disabled:opacity-50"
                       placeholder="Your Name"
                     />
                   </div>
@@ -237,7 +245,8 @@ export default function ContactSection() {
                       value={formData.email}
                       onChange={handleInputChange}
                       required
-                      className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors"
+                      disabled={isLoading}
+                      className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors disabled:opacity-50"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -251,7 +260,8 @@ export default function ContactSection() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     required
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors"
+                    disabled={isLoading}
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors disabled:opacity-50"
                     placeholder="What's this about?"
                   />
                 </div>
@@ -263,35 +273,47 @@ export default function ContactSection() {
                     value={formData.message}
                     onChange={handleInputChange}
                     required
+                    disabled={isLoading}
                     rows={6}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-slate-700/50 border border-purple-500/30 rounded-xl text-white placeholder-gray-400 focus:border-purple-500 focus:outline-none transition-colors resize-none disabled:opacity-50"
                     placeholder="Tell me about your project or just say hello!"
                   />
                 </div>
-                 <div className="h-4"></div>
+
                 <button
                   type="submit"
-                  className="group relative w-full inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white font-semibold rounded-2xl shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300 hover:-translate-y-1 hover:scale-105 border border-purple-500/30 hover:border-purple-400/60 backdrop-blur-sm overflow-hidden"
+                  disabled={isLoading}
+                  className="group relative w-full inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-blue-600 via-purple-600 to-indigo-600 text-white font-semibold rounded-2xl shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/40 transition-all duration-300 hover:-translate-y-1 hover:scale-105 border border-purple-500/30 hover:border-purple-400/60 backdrop-blur-sm overflow-hidden disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:translate-y-0"
                 >
                   {/* Background glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 via-purple-400/20 to-indigo-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl"></div>
                   
                   {/* Content */}
                   <div className="relative flex items-center space-x-3">
-                    <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                    <span className="text-base tracking-wide">Send Message</span>
-                    <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+                    {isLoading ? (
+                      <svg className="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                    ) : (
+                      <svg className="w-5 h-5 transition-transform duration-300 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                      </svg>
+                    )}
+                    <span className="text-base tracking-wide">
+                      {isLoading ? 'Sending...' : 'Send Message'}
+                    </span>
+                    {!isLoading && (
+                      <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    )}
                   </div>
                 </button>
               </form>
             </div>
           </div>
         </div>
-        <div className="h-35"></div>
+
         {/* Footer */}
         <div className={`text-center mt-16 pt-8 border-t border-purple-500/20 transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <p className="text-gray-400 mb-4">
