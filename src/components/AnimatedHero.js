@@ -121,7 +121,7 @@ export default function AnimatedHero() {
         <div className={`absolute left-8 bottom-20 transition-all duration-1000 delay-700 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
           <a 
             href="#contact"
-            className="group relative inline-flex items-center px-6 py-3 overflow-hidden text-lg font-medium text-white border-2 border-white/30 rounded-full hover:text-black hover:bg-white transition-all duration-300 ease-out backdrop-blur-sm bg-white/10"
+            className="group relative inline-flex items-center px-6 py-3 overflow-hidden text-lg font-medium text-white border-2 border-white/30 rounded-full hover:text-black hover:bg-white transition-all duration-300 ease-out backdrop-blur-sm bg-white/40"
           >
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-400 to-white-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             <span className="relative flex items-center gap-2">
@@ -138,7 +138,7 @@ export default function AnimatedHero() {
           <a 
             href="/folder/bumuthu-cv.pdf"
             download="Bumuthu-CV.pdf"
-            className="group relative inline-flex items-center px-6 py-3 overflow-hidden text-lg font-medium text-white border-2 border-white/30 rounded-full hover:text-black hover:bg-white transition-all duration-300 ease-out backdrop-blur-sm bg-white/10"
+            className="group relative inline-flex items-center px-6 py-3 overflow-hidden text-lg font-medium text-white border-2 border-white/30 rounded-full hover:text-black hover:bg-white transition-all duration-300 ease-out backdrop-blur-sm bg-white/40"
           >
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-gray-400 to-white-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
             <span className="relative flex items-center gap-2">
