@@ -94,7 +94,7 @@ export default function ProjectsSection() {
               My Projects
             </h2>
             <div className="h-4"></div>
-            <p className="text-gray-200 text-xl mt-6">(......This project section is under development ! ...)</p>
+            <p className="text-gray-200 text-xl mt-6">(Full description of each project coming soon...)</p>
           </div>
            
           {/* Projects Grid - Centered */}
