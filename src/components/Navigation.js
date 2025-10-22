@@ -34,8 +34,20 @@ const MailIcon = () => (
   </svg>
 );
 
+// Hamburger Menu Icon
+const HamburgerIcon = ({ isOpen }) => (
+  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    {isOpen ? (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+    ) : (
+      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+    )}
+  </svg>
+);
+
 export default function Navigation() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Home', icon: HomeIcon },
@@ -84,55 +96,148 @@ export default function Navigation() {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
+      // Close mobile menu after navigation
+      setIsMobileMenuOpen(false);
     }
   };
 
   return (
-    <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
-      <div className="flex flex-col space-y-4">
-        {navItems.map((item, index) => {
-          const IconComponent = item.icon;
-          return (
-            <div key={item.id} className="relative group">
-              <button
-                onClick={() => scrollToSection(item.id)}
-                className={`relative flex items-center justify-center w-14 h-14 rounded-2xl transition-all duration-500 transform backdrop-blur-xl border ${
-                  activeSection === item.id
-                    ? 'bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-pink-500/90 text-white shadow-2xl shadow-purple-500/40 scale-110 border-purple-300/50'
-                    : 'bg-slate-900/70 text-gray-400 hover:bg-slate-800/80 hover:text-white hover:scale-105 hover:shadow-xl hover:shadow-slate-900/50 border-slate-700/50 hover:border-purple-500/30'
-                }`}
-                title={item.label}
-              >
-                <IconComponent />
+    <>
+      {/* Desktop Navigation - Hidden on mobile */}
+      <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
+        <div className="flex flex-col space-y-4">
+          {navItems.map((item, index) => {
+            const IconComponent = item.icon;
+            return (
+              <div key={item.id} className="relative group">
+                <button
+                  onClick={() => scrollToSection(item.id)}
+                  className={`relative flex items-center justify-center w-14 h-14 rounded-2xl transition-all duration-500 transform backdrop-blur-xl border ${
+                    activeSection === item.id
+                      ? 'bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-pink-500/90 text-white shadow-2xl shadow-purple-500/40 scale-110 border-purple-300/50'
+                      : 'bg-slate-900/70 text-gray-400 hover:bg-slate-800/80 hover:text-white hover:scale-105 hover:shadow-xl hover:shadow-slate-900/50 border-slate-700/50 hover:border-purple-500/30'
+                  }`}
+                  title={item.label}
+                >
+                  <IconComponent />
+                  
+                  {/* Active indicator line */}
+                  {activeSection === item.id && (
+                    <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 rounded-full shadow-lg"></div>
+                  )}
+                </button>
                 
-                {/* Active indicator line */}
-                {activeSection === item.id && (
-                  <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 rounded-full shadow-lg"></div>
-                )}
-
-                {/* Floating number indicator */}
-                
-              </button>
-              
-              {/* Enhanced Tooltip */}
-              <div className="absolute right-16 top-1/2 -translate-y-1/2 bg-slate-900/95 backdrop-blur-xl text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none shadow-xl border border-purple-500/30">
-                {item.label}
-                <div className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-4 border-l-slate-900 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
+                {/* Enhanced Tooltip */}
+                <div className="absolute right-16 top-1/2 -translate-y-1/2 bg-slate-900/95 backdrop-blur-xl text-white px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none shadow-xl border border-purple-500/30">
+                  {item.label}
+                  <div className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-4 border-l-slate-900 border-t-4 border-t-transparent border-b-4 border-b-transparent"></div>
+                </div>
               </div>
-            </div>
-          );
-        })}
+            );
+          })}
+        </div>
+        
+        {/* Clean progress indicator */}
+        <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-slate-700/30 rounded-full">
+          <div 
+            className="w-full bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 rounded-full transition-all duration-500"
+            style={{
+              height: `${((navItems.findIndex(item => item.id === activeSection) + 1) / navItems.length) * 100}%`
+            }}
+          />
+        </div>
+      </nav>
+
+      {/* Mobile Navigation */}
+      <div className="lg:hidden">
+        {/* Mobile Hamburger Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className={`fixed top-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-2xl backdrop-blur-xl border text-white transition-all duration-300 shadow-2xl transform hover:scale-105 ${
+            isMobileMenuOpen
+              ? 'bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-pink-500/90 border-purple-300/50 shadow-purple-500/40 scale-110'
+              : 'bg-slate-900/80 border-purple-500/30 hover:bg-slate-800/90 hover:border-purple-500/50 hover:shadow-purple-500/20'
+          }`}
+        >
+          <HamburgerIcon isOpen={isMobileMenuOpen} />
+          
+          {/* Active glow effect */}
+          {isMobileMenuOpen && (
+            <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-600/20 to-pink-500/20 animate-pulse"></div>
+          )}
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        {isMobileMenuOpen && (
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40" onClick={() => setIsMobileMenuOpen(false)} />
+        )}
+
+        {/* Mobile Menu Panel - Professional Desktop-Style */}
+        <div className={`fixed top-1/2 right-6 -translate-y-1/2 transform transition-all duration-500 ease-out z-40 ${
+          isMobileMenuOpen ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-16 opacity-0 scale-95'
+        }`}>
+          <div className="flex flex-col space-y-4">
+            {navItems.map((item, index) => {
+              const IconComponent = item.icon;
+              return (
+                <div key={item.id} className="relative group">
+                  <button
+                    onClick={() => scrollToSection(item.id)}
+                    className={`relative flex items-center justify-center w-16 h-16 rounded-2xl transition-all duration-500 transform backdrop-blur-xl border shadow-2xl ${
+                      activeSection === item.id
+                        ? 'bg-gradient-to-br from-blue-500/90 via-purple-600/90 to-pink-500/90 text-white shadow-purple-500/40 scale-110 border-purple-300/50'
+                        : 'bg-slate-900/80 text-gray-400 hover:bg-slate-800/90 hover:text-white hover:scale-105 hover:shadow-xl hover:shadow-slate-900/50 border-slate-700/50 hover:border-purple-500/30'
+                    }`}
+                    style={{
+                      animationDelay: `${index * 100}ms`,
+                      animation: isMobileMenuOpen ? 'slideInRight 0.6s ease-out forwards' : 'none'
+                    }}
+                  >
+                    <IconComponent />
+                    
+                    {/* Active indicator line */}
+                    {activeSection === item.id && (
+                      <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-1 h-10 bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 rounded-full shadow-lg animate-pulse"></div>
+                    )}
+
+                    {/* Glow effect for active item */}
+                    {activeSection === item.id && (
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/20 via-purple-600/20 to-pink-500/20 animate-pulse"></div>
+                    )}
+                  </button>
+                  
+                  {/* Enhanced Mobile Tooltip */}
+                  <div className="absolute right-20 top-1/2 -translate-y-1/2 bg-slate-900/95 backdrop-blur-xl text-white px-4 py-3 rounded-xl text-base font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none shadow-2xl border border-purple-500/40 group-hover:scale-105">
+                    {item.label}
+                    <div className="absolute left-full top-1/2 -translate-y-1/2 w-0 h-0 border-l-6 border-l-slate-900/95 border-t-6 border-t-transparent border-b-6 border-b-transparent"></div>
+                  </div>
+
+                  {/* Number indicator  
+                  <div className={`absolute -top-2 -left-2 w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center transition-all duration-300 ${
+                    activeSection === item.id
+                      ? 'bg-gradient-to-r from-pink-500 to-purple-600 text-white scale-110 shadow-lg'
+                      : 'bg-slate-700/80 text-gray-300 group-hover:bg-purple-600/80 group-hover:text-white group-hover:scale-110'
+                  }`}>
+                    {index + 1}
+                  </div> */}
+                </div>
+              );
+            })}
+          </div>
+          
+          {/* Mobile Progress Indicator */}
+          <div className="absolute -left-6 top-0 bottom-0 w-1 bg-slate-700/40 rounded-full overflow-hidden">
+            <div 
+              className="w-full bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 rounded-full transition-all duration-700 ease-out shadow-lg"
+              style={{
+                height: `${((navItems.findIndex(item => item.id === activeSection) + 1) / navItems.length) * 100}%`,
+                boxShadow: '0 0 20px rgba(168, 85, 247, 0.6)'
+              }}
+            />
+          </div>
+
+        </div>
       </div>
-      
-      {/* Clean progress indicator */}
-      <div className="absolute -left-4 top-0 bottom-0 w-0.5 bg-slate-700/30 rounded-full">
-        <div 
-          className="w-full bg-gradient-to-b from-blue-400 via-purple-500 to-pink-500 rounded-full transition-all duration-500"
-          style={{
-            height: `${((navItems.findIndex(item => item.id === activeSection) + 1) / navItems.length) * 100}%`
-          }}
-        />
-      </div>
-    </nav>
+    </>
   );
 }
