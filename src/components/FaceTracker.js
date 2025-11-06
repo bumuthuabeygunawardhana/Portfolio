@@ -6,7 +6,20 @@ export default function FaceTracker() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [eyePos, setEyePos] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const faceRef = useRef(null);
+  const animationFrame = useRef(null);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     // Create Intersection Observer to detect when component is visible
@@ -33,7 +46,10 @@ export default function FaceTracker() {
     return () => observer.disconnect();
   }, []);
 
+  // Desktop: Mouse tracking
   useEffect(() => {
+    if (isMobile) return; // Skip mouse tracking on mobile
+
     const handleMouseMove = (e) => {
       // Only track mouse if component is visible
       if (!isVisible || !faceRef.current) return;
@@ -62,7 +78,73 @@ export default function FaceTracker() {
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [isVisible]); // Dependency on isVisible
+  }, [isVisible, isMobile]); // Dependency on isVisible and isMobile
+
+  // Mobile: Smooth continuous animation (gyroscope-like effect)
+  useEffect(() => {
+    if (!isMobile || !isVisible) return;
+
+    let angle = 0;
+    const animate = () => {
+      angle += 0.01; // Slow rotation speed
+      
+      // Create smooth circular motion
+      const x = Math.sin(angle) * 0.3; // Reduced amplitude for subtle effect
+      const y = Math.cos(angle * 1.3) * 0.2; // Different frequency for natural movement
+      
+      setMousePos({ x, y });
+      
+      // Eye tracking
+      const eyeX = Math.max(-1, Math.min(1, x * 2));
+      const eyeY = Math.max(-1, Math.min(1, y * 2));
+      setEyePos({ x: eyeX, y: eyeY });
+      
+      animationFrame.current = requestAnimationFrame(animate);
+    };
+
+    animationFrame.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrame.current) {
+        cancelAnimationFrame(animationFrame.current);
+      }
+    };
+  }, [isMobile, isVisible]);
+
+  // Mobile: Touch interaction for interactive feel
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const handleTouch = (e) => {
+      if (!isVisible || !faceRef.current) return;
+
+      const touch = e.touches[0];
+      const rect = faceRef.current.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      // Calculate touch position relative to face center
+      const x = (touch.clientX - centerX) / rect.width;
+      const y = (touch.clientY - centerY) / rect.height;
+      
+      // Temporarily follow touch, then return to animation
+      setMousePos({ x: x * 0.5, y: y * 0.5 }); // Reduced for subtle effect
+      
+      const eyeX = Math.max(-1, Math.min(1, x));
+      const eyeY = Math.max(-1, Math.min(1, y));
+      setEyePos({ x: eyeX, y: eyeY });
+    };
+
+    if (isVisible && faceRef.current) {
+      faceRef.current.addEventListener('touchmove', handleTouch);
+    }
+
+    return () => {
+      if (faceRef.current) {
+        faceRef.current.removeEventListener('touchmove', handleTouch);
+      }
+    };
+  }, [isMobile, isVisible]);
 
   return (
     <div className="relative flex items-center justify-center">
