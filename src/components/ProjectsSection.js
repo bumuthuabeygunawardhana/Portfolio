@@ -84,17 +84,17 @@ export default function ProjectsSection() {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-20 flex items-center justify-center">
-      <div className="w-full max-w-6xl mx-auto px-8 md:px-12 lg:px-16 xl:px-20">
+    <section className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-16 sm:py-20 flex items-center justify-center">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         <div className="flex flex-col items-center justify-center text-center">
           {/* Section Title */}
-          <div className="h-10"></div>
-          <div className={`mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-            <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+          <div className="h-8 sm:h-10"></div>
+          <div className={`mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-3 sm:mb-4 px-4">
               My Projects
             </h2>
-            <div className="h-4"></div>
-            <p className="text-gray-200 text-xl mt-6">(Full description of each project coming soon...)</p>
+            <div className="h-3 sm:h-4"></div>
+            <p className="text-gray-200 text-base sm:text-lg md:text-xl mt-4 sm:mt-6 px-4">(Full description of each project coming soon...)</p>
           </div>
            
           {/* Projects Grid - Centered */}

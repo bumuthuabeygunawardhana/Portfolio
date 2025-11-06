@@ -155,27 +155,28 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-20 flex items-center justify-center">
-      <div className="w-full max-w-6xl mx-auto px-8 md:px-12 lg:px-16 xl:px-20">
+    <section id="contact" className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-16 sm:py-20 flex items-center justify-center">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16">
         {/* Section Title */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-3 sm:mb-4">
             Get In Touch
           </h2>
-          <p className="text-gray-400 text-xl mt-6">Let's discuss your next project</p>
+          <p className="text-gray-400 text-lg sm:text-xl mt-4 sm:mt-6 px-4">Let's discuss your next project</p>
+          <div className="h-12 sm:h-15"></div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-20">
+        <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20">
           {/* Contact Information */}
           <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
-            <h3 className="text-3xl font-bold text-white mb-8">Let's Connect</h3>
-            
-            <p className="text-gray-300 text-lg mb-8 leading-relaxed">
+            <h3 className="text-2xl sm:text-3xl font-bold text-white mb-6 sm:mb-8">Let's Connect</h3>
+            <div className="h-2 sm:h-3"></div>
+            <p className="text-gray-300 text-base sm:text-lg mb-6 sm:mb-8 leading-relaxed px-2 sm:px-0">
               I'm eager to start my journey as an Intern Software Engineer and excited to join the industry to gain knowledge and hands-on experience. If you have an opportunity, a project to collaborate on, or simply want to connect, I'd love to hear from you!
             </p>
-            
+            <div className="h-2 sm:h-3"></div>
             {/* Contact Info Cards */}
-            <div className="space-y-4 mb-8">
+            <div className="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
               {contactInfo.map((info, index) => (
                 <a
                   key={index}
@@ -197,18 +198,20 @@ export default function ContactSection() {
             
             {/* Social Links */}
             <div>
-              <h4 className="text-xl font-bold text-white mb-4">Follow Me</h4>
-              <div className="flex flex-wrap gap-4">
+              <div className="h-4 sm:h-5"></div>
+              <h4 className="text-lg sm:text-xl font-bold text-white mb-3 sm:mb-4">Follow Me</h4>
+              <div className="h-4 sm:h-5"></div>
+              <div className="flex flex-wrap gap-3 sm:gap-4 justify-center sm:justify-start">
                 {socialLinks.map((social, index) => (
                   <a
                     key={index}
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center justify-center w-14 h-14 bg-slate-700/60 border-2 border-purple-500/40 rounded-xl hover:border-purple-500/80 hover:bg-slate-600/80 ${social.color} transition-all duration-300 hover:scale-115 hover:shadow-lg hover:shadow-purple-500/30`}
+                    className={`flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-slate-700/60 border-2 border-purple-500/40 rounded-xl hover:border-purple-500/80 hover:bg-slate-600/80 ${social.color} transition-all duration-300 hover:scale-115 hover:shadow-lg hover:shadow-purple-500/30`}
                     title={social.name}
                   >
-                    <div className={`text-white ${social.color} transition-all duration-300 text-lg`}>
+                    <div className={`text-white ${social.color} transition-all duration-300 text-base sm:text-lg`}>
                       {social.icon}
                     </div>
                   </a>
@@ -219,11 +222,11 @@ export default function ContactSection() {
 
           {/* Contact Form */}
           <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}`}>
-            <div className="bg-slate-800/50 backdrop-blur-lg border border-purple-500/20 rounded-2xl p-8">
-              <h3 className="text-3xl font-bold text-white mb-6">Send Message</h3>
+            <div className="bg-slate-800/50 backdrop-blur-lg border border-purple-500/20 rounded-2xl p-6 sm:p-8">
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mb-5 sm:mb-6">Send Message</h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+              <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+                <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
                   <div>
                     <label className="block text-white font-medium mb-2">Name *</label>
                     <input
@@ -315,6 +318,7 @@ export default function ContactSection() {
         </div>
 
         {/* Footer */}
+        <div className="h-15"></div>
         <div className={`text-center mt-16 pt-8 border-t border-purple-500/20 transition-all duration-1000 delay-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
           <p className="text-gray-400 mb-4">
             © 2025 Bumuthu Abeygunawardhana. All rights reserved.
