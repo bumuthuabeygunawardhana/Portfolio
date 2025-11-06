@@ -83,21 +83,21 @@ export default function AboutSection() {
   };
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-black flex flex-col items-center justify-start px-8 pt-24 pb-16">
-      <div className="h-16"></div>
+    <section className="min-h-screen bg-gradient-to-br from-slate-800 via-slate-900 to-black flex flex-col items-center justify-start px-4 sm:px-6 md:px-8 lg:px-12 pt-20 sm:pt-24 pb-12 sm:pb-16">
+      <div className="h-12 sm:h-16"></div>
         {/* About Me Section */}
         <div className="w-full max-w-6xl text-center">
           <div className="mx-auto">
             {/* Section Title */}
-            <div className={`mb-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+            <div className={`mb-6 sm:mb-8 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
                 About Me
               </h2>
             </div>
-            <div className="h-10"></div>
+            <div className="h-8 sm:h-10"></div>
             {/* Content */}
             <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              <p className="text-gray-300 text-xl md:text-2xl leading-relaxed">
+              <p className="text-gray-300 text-lg sm:text-xl md:text-2xl leading-relaxed px-2 sm:px-4">
                 I am <span className="text-blue-400 font-semibold">Bumuthu Abeygunawardhana</span>, a 3rd-year undergraduate pursuing a B.Sc. (Hons) in Information Technology at the University of Moratuwa, Faculty of Information Technology, Sri Lanka. I am passionate about technology, problem-solving, and continuously developing my skills in software engineering and IT-related fields. I aim to apply my knowledge and creativity to contribute effectively to innovative projects and real-world solutions.
               </p>
             </div>

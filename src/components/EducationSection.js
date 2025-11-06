@@ -26,7 +26,7 @@ export default function EducationSection() {
       year: "2023 - 2027",
       grade: "Class is loading...",
       description: "I am currently pursuing a Bachelor of Science Honours Degree in Information Technology at the University of Moratuwa, one of Sri Lanka’s leading technological universities. The program provides a strong foundation in software engineering, data management, networking, and emerging technologies",
-      subjects: ["GPA: 3.32/4.0"],
+      subjects: ["GPA: 3.42/4.0"],
       
     },
     {
@@ -86,16 +86,16 @@ export default function EducationSection() {
   ];
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-20 flex flex-col justify-center">
-      <div className="w-full">
-        <div className="h-8"></div>
+    <section className="min-h-screen bg-gradient-to-br from-black via-slate-900 to-slate-800 py-16 sm:py-20 flex flex-col justify-center">
+      <div className="w-full px-4 sm:px-6 md:px-8">
+        <div className="h-6 sm:h-8"></div>
         {/* Section Title */}
-        <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <h2 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-4">
+        <div className={`text-center mb-12 sm:mb-16 transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent mb-3 sm:mb-4 px-4">
             Education
           </h2>
-          <div className="h-4"></div>
-          <p className="text-gray-400 text-xl mt-6">My academic journey and continuous learning path</p>
+          <div className="h-3 sm:h-4"></div>
+          <p className="text-gray-400 text-base sm:text-lg md:text-xl mt-4 sm:mt-6 px-4">My academic journey and continuous learning path</p>
         </div>
         {/* Centered container for stacked sections */}
         <div className="w-full flex flex-col items-center">
